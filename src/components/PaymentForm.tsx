@@ -93,28 +93,30 @@ const PaymentForm: React.FC<{ operator: string }> = ({ operator }) => {
     <FormContainer>
       <LogoImage operator={operator as string} />
       <MainHeader>Оплата {operator}</MainHeader>
-      <Formik
-        enableReinitialize
-        initialValues={initialValues}
-        onSubmit={(v) => handleSubmit(v)}
-        validationSchema={toFormikValidationSchema(PaymentFormSchema)}
-      >
-        <FormCustom>
-          <PhoneInput
-            name="phoneNumber"
-            label="Номер телефона"
-            type="text"
-            placeholder="8(XXX) XXX-XXXX"
-          />
-          <SumInput
-            name="sum"
-            label="Сумма"
-            type="number"
-            placeholder="Сумма в рублях"
-          />
-          <Button type="submit">Оплатить</Button>
-        </FormCustom>
-      </Formik>
+      <React.Suspense>
+        <Formik
+          enableReinitialize
+          initialValues={initialValues}
+          onSubmit={(v) => handleSubmit(v)}
+          validationSchema={toFormikValidationSchema(PaymentFormSchema)}
+        >
+          <FormCustom>
+            <PhoneInput
+              name="phoneNumber"
+              label="Номер телефона"
+              type="text"
+              placeholder="8(XXX) XXX-XXXX"
+            />
+            <SumInput
+              name="sum"
+              label="Сумма"
+              type="number"
+              placeholder="Сумма в рублях"
+            />
+            <Button type="submit">Оплатить</Button>
+          </FormCustom>
+        </Formik>
+      </React.Suspense>
       {message && (
         <StyledMessage
           result={result ? true : false}
