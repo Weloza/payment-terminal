@@ -1,11 +1,10 @@
 'use client'
 
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import styled from 'styled-components';
 import Loader from '@/components/Loader';
-
-const PaymentForm = lazy(() => import('../../components/PaymentForm'));
+import PaymentForm from '@/components/PaymentForm';
 
 const Container = styled.div`
   height: 700px;
@@ -26,9 +25,9 @@ const StyledError = styled.p`
   margin-top: 45vh;
 `
 
-const PayPage: React.FC = () => {
+const InnerPayPage: React.FC = () => {
   const searchParams = useSearchParams();
-  const operator = searchParams.get('query');;
+  const operator = searchParams.get('query');
 
   if (!operator) {
     return (
@@ -40,10 +39,16 @@ const PayPage: React.FC = () => {
 
   return (
     <Container>
-      <Suspense fallback={<Loader />}>
-        <PaymentForm operator={operator as string} />
-      </Suspense>
+      <PaymentForm operator={operator as string} />
     </Container>
+  );
+};
+
+const PayPage: React.FC = () => {
+  return (
+    <Suspense fallback={<Loader />}>
+      <InnerPayPage />
+    </Suspense>
   );
 };
 
