@@ -1,10 +1,11 @@
 'use client'
 
-import React, { Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import PaymentForm from '../../components/PaymentForm';
 import styled from 'styled-components';
 import Loader from '@/components/Loader';
+
+const PaymentForm = lazy(() => import('../../components/PaymentForm'));
 
 const Container = styled.div`
   height: 700px;
