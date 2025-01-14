@@ -57,8 +57,8 @@ const MainHeader = styled.h1`
   font-weight: bold;
 `;
 
-const StyledMessage = styled.p<{ result: boolean }>`
-  color: ${(props) => props.result ? "green" : "red"};
+const StyledMessage = styled.p<{ result: string }>`
+  color: ${(props) => (props.result === 'true') ? "green" : "red"};
 `;
 
 interface MyFormValues {
@@ -69,21 +69,23 @@ const initialValues: MyFormValues = { phoneNumber: '', sum: 0 };
 
 const PaymentForm: React.FC<{ operator: string }> = ({ operator }) => {
   const [message, setMessage] = React.useState('');
-  const [result, setResult] = React.useState(false);
+  const [result, setResult] = React.useState('');
 
   const handleSubmit = async (values: MyFormValues) => {
     const number = values.phoneNumber;
     console.log(number);
+
     const success = Math.random() > 0.5;
+
     if (success) {
-      setResult(true);
+      setResult('true');
       setMessage(`Оплата успешно проведена!`);
       setTimeout(() => {
-        setMessage('');
+        setMessage('true');
         window.location.href = '/';
       }, 2000);
     } else {
-      setResult(false);
+      setResult('false');
       setMessage('Ошибка при проведении оплаты. Попробуйте снова.');
       setTimeout(() => setMessage(''), 2000);
     }
@@ -93,33 +95,31 @@ const PaymentForm: React.FC<{ operator: string }> = ({ operator }) => {
     <FormContainer>
       <LogoImage operator={operator as string} />
       <MainHeader>Оплата {operator}</MainHeader>
-      <React.Suspense>
-        <Formik
-          enableReinitialize
-          initialValues={initialValues}
-          onSubmit={(v) => handleSubmit(v)}
-          validationSchema={toFormikValidationSchema(PaymentFormSchema)}
-        >
-          <FormCustom>
-            <PhoneInput
-              name="phoneNumber"
-              label="Номер телефона"
-              type="text"
-              placeholder="8(XXX) XXX-XXXX"
-            />
-            <SumInput
-              name="sum"
-              label="Сумма"
-              type="number"
-              placeholder="Сумма в рублях"
-            />
-            <Button type="submit">Оплатить</Button>
-          </FormCustom>
-        </Formik>
-      </React.Suspense>
+      <Formik
+        enableReinitialize
+        initialValues={initialValues}
+        onSubmit={(v) => handleSubmit(v)}
+        validationSchema={toFormikValidationSchema(PaymentFormSchema)}
+      >
+        <FormCustom>
+          <PhoneInput
+            name="phoneNumber"
+            label="Номер телефона"
+            type="text"
+            placeholder="8(XXX) XXX-XXXX"
+          />
+          <SumInput
+            name="sum"
+            label="Сумма"
+            type="number"
+            placeholder="Сумма в рублях"
+          />
+          <Button type="submit">Оплатить</Button>
+        </FormCustom>
+      </Formik>
       {message && (
         <StyledMessage
-          result={result ? true : false}
+          result={result}
         >
           {message}
         </StyledMessage>
