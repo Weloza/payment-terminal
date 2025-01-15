@@ -13,9 +13,9 @@ const Home: React.FC = () => {
     <MainContainer>
       <MainHeader>{PAYMENT}</MainHeader>
       <SecondaryHeader>{HEADER_TEXT}</SecondaryHeader>
-      <MenuContainer>
+
         <OperatorList />
-      </MenuContainer>
+
       <Marquee text={MARQUEE_TEXT} />
     </MainContainer>
   );
