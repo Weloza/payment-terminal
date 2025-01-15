@@ -9,7 +9,7 @@ export const Marquee: React.FC<MarqueeProps> = ({ text }) => {
   return (
     <MarqueeContainer>
       <MarqueeContent>
-        <span>{text}</span>
+        <span>{text}{text}</span>
       </MarqueeContent>
     </MarqueeContainer>
   );

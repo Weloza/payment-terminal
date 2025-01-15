@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const ListContainer = styled.div`
-  display: grid;
-  grid-template-columns: max-content max-content max-content max-content max-content;
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   margin: 10px;
   margin-left: 20px;
 `;
@@ -17,7 +18,7 @@ export const Header = styled.h1`
 `;
 
 export const OperatorButton = styled.button`
-  margin-left: 150px;
+  margin-left: 5%;
   padding: 15px 30px;
   font-size: 25px;
   font-weight: 500;

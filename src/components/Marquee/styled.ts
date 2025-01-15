@@ -5,7 +5,7 @@ export const MarqueeContainer = styled.div`
   white-space: nowrap;
   box-sizing: border-box;
   width: 100%;
-  height: 40%;
+  height: 10vh;
   background-color: #f0f0f0;
 `;
 

@@ -20,10 +20,10 @@ export const Button = styled.button`
 `;
 
 export const FormContainer = styled.div`
-  margin-top: 40px;
-  margin-left: 10px;
-  height: 500px;
-  width: 500px;
+  margin: 15px;
+  padding: 15px;
+  min-height: 60vh;
+  min-width: 35vw;
   display: flex;
   justify-content: center;
   background-color: rgba(199, 199, 208, 0.4);

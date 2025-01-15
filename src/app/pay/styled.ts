@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 700px;
+  min-height: 95vh;
   margin: 10px;
   background-image: url("/images/MainContainerBackground.jpeg");
   background-size: cover;
   background-repeat:no-repeat;
   background-position: center center;
   border-radius: 20px;
-  display: grid;
+  display: flex;
   align-items: center;
   justify-content: center;
 `
