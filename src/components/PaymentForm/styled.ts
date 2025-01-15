@@ -25,7 +25,7 @@ export const Button = styled.button`
   and (max-width : 255px) {
     width: 80%;
     font-size: 0.8em;
-    padding: 1px;
+    padding: 4px;
   }
 `;
 
@@ -51,8 +51,14 @@ export const FormContainer = styled.div`
   }
 
   @media only screen 
-  and (min-width : 400px) 
+  and (min-width : 430px) 
   and (max-width : 450px) {
+    min-width: 425px;
+  }
+
+  @media only screen 
+  and (min-width : 400px) 
+  and (max-width : 430px) {
     min-width: 395px;
   }
 
