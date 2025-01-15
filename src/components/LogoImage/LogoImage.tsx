@@ -1,3 +1,4 @@
+import { Loader } from "../Loader";
 import { StyledLogo } from "./styled";
 
 interface LogoUrls {
@@ -10,12 +11,12 @@ export const logoUrls: LogoUrls = {
   Мегафон: '/assets/megafone.jpeg',
 };
 
-export const LogoImage: React.FC<{ operator: string }> = ({ operator }) => {
+export const LogoImage: React.FC<{ operator: string, loading: boolean }> = ({ operator, loading }) => {
   const logoUrl = logoUrls[operator];
 
   return (
     <>
-      <StyledLogo src={logoUrl} alt={operator}/>
+      {loading ? <Loader /> : <StyledLogo src={logoUrl} alt={operator}/>}
     </>
   )
 }

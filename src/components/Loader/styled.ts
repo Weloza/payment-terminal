@@ -18,6 +18,7 @@ export const LoaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background-color: rgba(0, 0, 0, 0.1);
+  min-height: 100px;
+  min-width: 100px;
 `;

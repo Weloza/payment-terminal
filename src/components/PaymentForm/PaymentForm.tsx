@@ -33,26 +33,34 @@ const initialValues: MyFormValues = { phoneNumber: '', sum: 0 };
 export const PaymentForm: React.FC<{ operator: string }> = ({ operator }) => {
   const [message, setMessage] = useState('');
   const [result, setResult] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
+    setLoading(true);
+    setMessage('');
     const success = Math.random() > 0.5;
 
     if (success) {
-      setResult(TRUE_TEXT);
-      setMessage(SUCCESS_TEXT);
       setTimeout(() => {
-        window.location.href = '/';
-      }, TIMEOUT_DELAY);
+        setResult(TRUE_TEXT);
+        setMessage(SUCCESS_TEXT);
+        setLoading(false);
+        setTimeout(() => {   
+          window.location.href = '/';
+        }, TIMEOUT_DELAY);
+      }, TIMEOUT_DELAY)
     } else {
       setResult(FALSE_TEXT);
-      setMessage(ERROR_TEXT);
-      setTimeout(() => setMessage(''), TIMEOUT_DELAY);
+      setTimeout(() => {
+        setMessage(ERROR_TEXT);
+        setLoading(false);
+      }, TIMEOUT_DELAY);
     }
   };
 
   return (
     <FormContainer>
-      <LogoImage operator={operator} />
+      <LogoImage operator={operator} loading={loading} />
       <MainHeader>{PAYMENT}{operator}</MainHeader>
       <Formik
         enableReinitialize
