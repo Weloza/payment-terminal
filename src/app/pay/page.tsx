@@ -7,7 +7,7 @@ import { Loader, PaymentForm } from '@/components';
 
 const ERROR_MESSAGE = 'Ошибка загрузки. Вернитесь на главную страницу и попробуйте снова.';
 
-export const InnerPayPage: React.FC = () => {
+const InnerPayPage: React.FC = () => {
   const searchParams = useSearchParams();
   const operator = searchParams.get('query');
 
