@@ -2,22 +2,9 @@
 
 import { useField } from 'formik';
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { CustomInput, StyledErrorMessage } from './styled';
 
-const CustomInput = styled.input`
-    margin: 10px 0;
-    padding: 10px;
-    width: 250px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: black;
-`;
-
-const StyledErrorMessage = styled.div`
-  color: red;
-`;
-
-const SumInput = ({ ...props }) => {
+export const SumInput = ({ ...props }) => {
   const [field, meta] = useField(props);
   const [sum, setSum] = useState<string>('');
 
@@ -47,5 +34,3 @@ const SumInput = ({ ...props }) => {
     </>
   );
 };
-
-export default SumInput;

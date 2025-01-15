@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Link to deployed app
 
-https://payment-terminal-3ehyewex4-welozas-projects.vercel.app/
+https://payment-terminal-git-main-welozas-projects.vercel.app/
 
 ## Getting Started
 

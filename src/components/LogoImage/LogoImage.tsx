@@ -1,21 +1,16 @@
-import styled from 'styled-components';
-
-const StyledLogo = styled.img`
-  height: 100px;
-  width: 100px;
-`;
+import { StyledLogo } from "./styled";
 
 interface LogoUrls {
   [key: string]: string;
 }
 
-const logoUrls: LogoUrls = {
+export const logoUrls: LogoUrls = {
   МТС: '/assets/mts.jpeg',
   Билайн: '/assets/beeline.jpeg',
   Мегафон: '/assets/megafone.jpeg',
 };
 
-const LogoImage: React.FC<{ operator: string }> = ({ operator }) => {
+export const LogoImage: React.FC<{ operator: string }> = ({ operator }) => {
   const logoUrl = logoUrls[operator];
 
   return (
@@ -24,5 +19,3 @@ const LogoImage: React.FC<{ operator: string }> = ({ operator }) => {
     </>
   )
 }
-
-export default LogoImage;

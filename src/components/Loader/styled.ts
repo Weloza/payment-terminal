@@ -1,12 +1,11 @@
-import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const spin = keyframes`
+export const spin = keyframes`
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 `;
 
-const Spinner = styled.div`
+export const Spinner = styled.div`
   border: 8px solid rgba(255, 255, 255, 0.3);
   border-left-color:rgb(98, 101, 156);
   border-radius: 50%;
@@ -15,20 +14,10 @@ const Spinner = styled.div`
   animation: ${spin} 1s linear infinite;
 `;
 
-const LoaderContainer = styled.div`
+export const LoaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.1);
 `;
-
-const Loader: React.FC = () => {
-  return (
-    <LoaderContainer>
-      <Spinner />
-    </LoaderContainer>
-  );
-};
-
-export default Loader;
