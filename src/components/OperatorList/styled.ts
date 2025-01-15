@@ -18,7 +18,6 @@ export const Header = styled.h1`
 `;
 
 export const OperatorButton = styled.button`
-  margin-left: 5%;
   padding: 15px 30px;
   font-size: 25px;
   font-weight: 500;
@@ -28,11 +27,10 @@ export const OperatorButton = styled.button`
   color: black;
   border-radius: 5px;
   transition: background-color 0.3s;
-
   background: transparent;
 
   &:hover {
-    background:rgb(235, 223, 223, 0.5);
+    background:rgb(235, 223, 223, 0.7);
   }
 `;
 

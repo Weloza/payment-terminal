@@ -41,7 +41,6 @@ export const PaymentForm: React.FC<{ operator: string }> = ({ operator }) => {
       setResult(TRUE_TEXT);
       setMessage(SUCCESS_TEXT);
       setTimeout(() => {
-        setMessage(TRUE_TEXT);
         window.location.href = '/';
       }, TIMEOUT_DELAY);
     } else {

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const MarqueeContainer = styled.div`
+  margin-top: 10px;
   overflow: hidden;
   white-space: nowrap;
   box-sizing: border-box;
