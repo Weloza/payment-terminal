@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import { MainContainer, MainHeader, MenuContainer, SecondaryHeader } from './styled';
+import { MainContainer, MainHeader, SecondaryHeader } from './styled';
 import { Marquee, OperatorList } from '@/components';
 
 const PAYMENT = 'Оплата связи';
@@ -13,9 +13,7 @@ const Home: React.FC = () => {
     <MainContainer>
       <MainHeader>{PAYMENT}</MainHeader>
       <SecondaryHeader>{HEADER_TEXT}</SecondaryHeader>
-
         <OperatorList />
-
       <Marquee text={MARQUEE_TEXT} />
     </MainContainer>
   );
