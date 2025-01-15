@@ -2,7 +2,7 @@
 
 import { useField } from 'formik';
 import React, { useState } from 'react';
-import { CustomInput, StyledErrorMessage } from './styled';
+import { CustomInput, CustomLabel, StyledErrorMessage } from './styled';
 
 export const SumInput = ({ ...props }) => {
   const [field, meta] = useField(props);
@@ -18,7 +18,7 @@ export const SumInput = ({ ...props }) => {
 
   return (
     <>
-      <label htmlFor={props.name}>{props.label}</label>
+      <CustomLabel htmlFor={props.name}>{props.label}</CustomLabel>
       <CustomInput
         {...field}
         {...props}

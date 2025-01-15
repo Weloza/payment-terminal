@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  min-height: 95vh;
-  margin: 10px;
+  min-height: 100vh;
   background-image: url("/images/MainContainerBackground.jpeg");
   background-size: cover;
   background-repeat:no-repeat;
   background-position: center center;
-  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
