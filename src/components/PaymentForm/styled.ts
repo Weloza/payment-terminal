@@ -69,21 +69,9 @@ export const FormContainer = styled.div`
   }
 
   @media only screen 
-  and (min-width : 300px) 
+  and (min-width : 320px) 
   and (max-width : 350px) {
     min-width: 295px;
-  }
-
-  @media only screen 
-  and (min-width : 250px) 
-  and (max-width : 300px) {
-    min-width: 245px;
-  }
-
-  @media only screen 
-  and (min-width : 200px) 
-  and (max-width : 250px) {
-    min-width: 195px;
   }
 `;
 export const FormCustom = styled(Form)`

@@ -36,25 +36,30 @@ export const PaymentForm: React.FC<{ operator: string }> = ({ operator }) => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
-    setLoading(true);
-    setMessage('');
-    const success = Math.random() > 0.5;
+    try {
+      setLoading(true);
+      setMessage('');
+      const success = Math.random() > 0.5;
 
-    if (success) {
-      setTimeout(() => {
-        setResult(TRUE_TEXT);
-        setMessage(SUCCESS_TEXT);
-        setLoading(false);
-        setTimeout(() => {   
-          window.location.href = '/';
+      if (success) {
+        setTimeout(() => {
+          setResult(TRUE_TEXT);
+          setMessage(SUCCESS_TEXT);
+          setLoading(false);
+          setTimeout(() => {   
+            window.location.href = '/';
+          }, TIMEOUT_DELAY);
+        }, TIMEOUT_DELAY)
+      } else {
+        setResult(FALSE_TEXT);
+        setTimeout(() => {
+          setMessage(ERROR_TEXT);
+          setLoading(false);
         }, TIMEOUT_DELAY);
-      }, TIMEOUT_DELAY)
-    } else {
-      setResult(FALSE_TEXT);
-      setTimeout(() => {
-        setMessage(ERROR_TEXT);
-        setLoading(false);
-      }, TIMEOUT_DELAY);
+      }
+    } catch (err: unknown) {
+      console.log(err);
+      throw new Error('Unknown Error');
     }
   };
 
@@ -65,7 +70,7 @@ export const PaymentForm: React.FC<{ operator: string }> = ({ operator }) => {
       <Formik
         enableReinitialize
         initialValues={initialValues}
-        onSubmit={() => handleSubmit()}
+        onSubmit={handleSubmit}
         validationSchema={toFormikValidationSchema(PaymentFormSchema)}
       >
         <FormCustom>
