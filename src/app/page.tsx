@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import { MainContainer, MainHeader, SecondaryHeader } from './styled';
+import { Main, MainContainer, MainHeader, SecondaryHeader } from './styled';
 import { Marquee, OperatorList } from '@/components';
 
 const PAYMENT = 'Оплата связи';
@@ -11,10 +11,16 @@ const MARQUEE_TEXT = 'Легкая Оплата * Безопасные Тран�
 const Home: React.FC = () => {
   return (
     <MainContainer>
-      <MainHeader>{PAYMENT}</MainHeader>
-      <SecondaryHeader>{HEADER_TEXT}</SecondaryHeader>
+      <header>
+        <MainHeader>{PAYMENT}</MainHeader>
+        <SecondaryHeader>{HEADER_TEXT}</SecondaryHeader>
+      </header>
+      <Main>
         <OperatorList />
-      <Marquee text={MARQUEE_TEXT} />
+      </Main>
+      <footer>
+        <Marquee text={MARQUEE_TEXT} />
+      </footer>
     </MainContainer>
   );
 };

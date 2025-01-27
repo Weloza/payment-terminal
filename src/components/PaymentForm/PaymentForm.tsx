@@ -1,13 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import React, { useState } from 'react';
 import { toFormikValidationSchema } from "zod-formik-adapter";
-import { Formik} from 'formik';
-import { Button, FormContainer, FormCustom, MainHeader, StyledMessage } from './styled';
+import { Formik } from 'formik';
+import { Article, Button, FormContainer, FormCustom, MainHeader, StyledMessage } from './styled';
 import { LogoImage } from '../LogoImage';
 import { PaymentFormSchema } from '@/schemas/PaymentFormSchema';
 import { PhoneInput } from '../PhoneInput';
 import { SumInput } from '../SumInput';
+import { Operator } from '../OperatorList';
 
 const TRUE_TEXT = 'true';
 const FALSE_TEXT = 'false';
@@ -30,43 +32,50 @@ interface MyFormValues {
 
 const initialValues: MyFormValues = { phoneNumber: '', sum: 0 };
 
-export const PaymentForm: React.FC<{ operator: string }> = ({ operator }) => {
+export const PaymentForm: React.FC<{ operator: Operator }> = ({ operator }) => {
   const [message, setMessage] = useState('');
   const [result, setResult] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async () => {
-    try {
-      setLoading(true);
-      setMessage('');
-      const success = Math.random() > 0.5;
+  const paymentOperation = (data: MyFormValues): Promise<boolean> => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log(data);
+        const success = Math.random() > 0.5;
+        if (!success) {
+          reject(ERROR_TEXT);
+        }
+        resolve(success);
+      }, TIMEOUT_DELAY);
+    });
+  };
 
-      if (success) {
-        setTimeout(() => {
-          setResult(TRUE_TEXT);
-          setMessage(SUCCESS_TEXT);
-          setLoading(false);
-          setTimeout(() => {   
-            window.location.href = '/';
-          }, TIMEOUT_DELAY);
-        }, TIMEOUT_DELAY)
-      } else {
-        setResult(FALSE_TEXT);
-        setTimeout(() => {
-          setMessage(ERROR_TEXT);
-          setLoading(false);
+  const handleSubmit = async (data: MyFormValues) => {
+    setLoading(true);
+    setMessage('');
+    try {
+      const result = await paymentOperation(data);
+      if (result) {
+        setResult(TRUE_TEXT);
+        setMessage(SUCCESS_TEXT);
+        setTimeout(() => {   
+          window.location.href = '/';
         }, TIMEOUT_DELAY);
-      }
-    } catch (err: unknown) {
-      console.log(err);
-      throw new Error('Unknown Error');
+      } 
+    } catch (err: any) {
+      setResult(FALSE_TEXT);
+      setMessage(err);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <FormContainer>
-      <LogoImage operator={operator} loading={loading} />
-      <MainHeader>{PAYMENT}{operator}</MainHeader>
+      <Article>
+        <LogoImage image={operator.image} alt={operator.title} loading={loading} />
+        <MainHeader>{PAYMENT}{operator.title}</MainHeader>
+      </Article>
       <Formik
         enableReinitialize
         initialValues={initialValues}

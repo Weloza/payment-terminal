@@ -10,14 +10,7 @@ export const CustomInput = styled.input`
   color: black;
 
   @media only screen 
-  and (min-width : 150px) 
-  and (max-width : 300px) {
-    min-width: 95%;
-    max-width: 100%;
-  }
-
-  @media only screen 
-  and (min-width : 300px) 
+  and (min-width : 320px) 
   and (max-width : 360px) {
     min-width: 95%;
     max-width: 100%;

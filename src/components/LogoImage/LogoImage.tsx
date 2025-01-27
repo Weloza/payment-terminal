@@ -1,22 +1,8 @@
 import { Loader } from "../Loader";
 import { StyledLogo } from "./styled";
 
-interface LogoUrls {
-  [key: string]: string;
-}
-
-export const logoUrls: LogoUrls = {
-  МТС: '/assets/mts.jpeg',
-  Билайн: '/assets/beeline.jpeg',
-  Мегафон: '/assets/megafone.jpeg',
-};
-
-export const LogoImage: React.FC<{ operator: string, loading: boolean }> = ({ operator, loading }) => {
-  const logoUrl = logoUrls[operator];
-
-  return (
-    <>
-      {loading ? <Loader /> : <StyledLogo src={logoUrl} alt={operator}/>}
-    </>
-  )
-}
+export const LogoImage: React.FC<{ image: string, alt: string, loading: boolean }> = ({ image, alt, loading }) => (
+  <>
+    {loading ? <Loader /> : <StyledLogo src={image} alt={alt}/>}
+  </>
+);

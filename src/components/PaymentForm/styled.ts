@@ -5,8 +5,7 @@ export const Button = styled.button`
   margin-top: 10px;
   padding: 10px;
   font-size: 2em;
-  font-weight: 100;
-  font-family: Moririse2;
+  font-family: 'Oswald';
   cursor: pointer;
   border: 1px solid black;
   color: black;
@@ -18,14 +17,6 @@ export const Button = styled.button`
 
   &:hover {
     background:rgb(235, 223, 223, 0.7);
-  }
-
-  @media only screen 
-  and (min-width : 150px) 
-  and (max-width : 255px) {
-    width: 80%;
-    font-size: 0.8em;
-    padding: 4px;
   }
 `;
 
@@ -71,22 +62,26 @@ export const FormContainer = styled.div`
   @media only screen 
   and (min-width : 320px) 
   and (max-width : 350px) {
-    min-width: 295px;
+    min-width: 315px;
   }
 `;
 export const FormCustom = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 5px;
   max-width: 95%;
 `;
 
-export const MainHeader = styled.h1`
+export const MainHeader = styled.h2`
   text-align: center;
   font-size: 2em;
   color: black;
-  font-weight: bold;
+  font-family: 'Oswald';
+`;
+
+export const Article = styled.article`
+  margin-bottom: 0;
 `;
 
 export const StyledMessage = styled.p<{ result: string }>`
