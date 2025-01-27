@@ -3,29 +3,23 @@
 import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Container, StyledError } from './styled';
-import { Loader, Operator, PaymentForm } from '@/components';
+import { Loader, PaymentForm } from '@/components';
+import { operators } from '@/data/mockData';
 
 const ERROR_MESSAGE = 'Ошибка загрузки. Вернитесь на главную страницу и попробуйте снова.';
 
 const InnerPayPage: React.FC = () => {
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
-  const title = searchParams.get('title');
-  const image = searchParams.get('image');
+  const operator = operators.filter((operator) => operator.id === id)[0];
 
-  if (!id || !title || !image) {
+  if (!id || !operator) {
     return (
       <StyledError>
         {ERROR_MESSAGE}
       </StyledError>
     );
   }
-
-  const operator: Operator = {
-    id,
-    title,
-    image,
-  };
 
   return (
     <Container>

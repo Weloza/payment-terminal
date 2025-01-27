@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
@@ -9,10 +10,10 @@ import { LogoImage } from '../LogoImage';
 import { PaymentFormSchema } from '@/schemas/PaymentFormSchema';
 import { PhoneInput } from '../PhoneInput';
 import { SumInput } from '../SumInput';
-import { Operator } from '../OperatorList';
+import { Operator } from '@/data/mockData';
 
-const TRUE_TEXT = 'true';
-const FALSE_TEXT = 'false';
+const SUCCESS_COLOR = 'green';
+const ERROR_COLOR = 'red';
 const SUCCESS_TEXT = 'Оплата успешно проведена!';
 const ERROR_TEXT = 'Ошибка при проведении оплаты. Попробуйте снова.';
 const TIMEOUT_DELAY = 2000;
@@ -34,13 +35,12 @@ const initialValues: MyFormValues = { phoneNumber: '', sum: 0 };
 
 export const PaymentForm: React.FC<{ operator: Operator }> = ({ operator }) => {
   const [message, setMessage] = useState('');
-  const [result, setResult] = useState('');
+  const [color, setColor] = useState('');
   const [loading, setLoading] = useState(false);
 
   const paymentOperation = (data: MyFormValues): Promise<boolean> => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log(data);
         const success = Math.random() > 0.5;
         if (!success) {
           reject(ERROR_TEXT);
@@ -56,15 +56,15 @@ export const PaymentForm: React.FC<{ operator: Operator }> = ({ operator }) => {
     try {
       const result = await paymentOperation(data);
       if (result) {
-        setResult(TRUE_TEXT);
+        setColor(SUCCESS_COLOR);
         setMessage(SUCCESS_TEXT);
-        setTimeout(() => {   
+        setTimeout(() => {
           window.location.href = '/';
         }, TIMEOUT_DELAY);
-      } 
-    } catch (err: any) {
-      setResult(FALSE_TEXT);
-      setMessage(err);
+      }
+    } catch (error: any) {
+      setColor(ERROR_COLOR);
+      setMessage(error);
     } finally {
       setLoading(false);
     }
@@ -100,7 +100,7 @@ export const PaymentForm: React.FC<{ operator: Operator }> = ({ operator }) => {
       </Formik>
       {message && (
         <StyledMessage
-          result={result}
+          color={color}
         >
           {message}
         </StyledMessage>

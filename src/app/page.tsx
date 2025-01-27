@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import { Main, MainContainer, MainHeader, SecondaryHeader } from './styled';
+import { Main, MainContainer, MainTitle, SecondaryTitle, StyledFooter } from './styled';
 import { Marquee, OperatorList } from '@/components';
 
 const PAYMENT = 'Оплата связи';
@@ -12,15 +12,15 @@ const Home: React.FC = () => {
   return (
     <MainContainer>
       <header>
-        <MainHeader>{PAYMENT}</MainHeader>
-        <SecondaryHeader>{HEADER_TEXT}</SecondaryHeader>
+        <MainTitle>{PAYMENT}</MainTitle>
+        <SecondaryTitle>{HEADER_TEXT}</SecondaryTitle>
       </header>
       <Main>
         <OperatorList />
       </Main>
-      <footer>
+      <StyledFooter>
         <Marquee text={MARQUEE_TEXT} />
-      </footer>
+      </StyledFooter>
     </MainContainer>
   );
 };

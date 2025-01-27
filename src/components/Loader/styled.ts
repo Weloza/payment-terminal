@@ -19,6 +19,8 @@ export const LoaderContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.1);
-  min-height: 100px;
-  min-width: 100px;
+  max-height: 100px;
+  min-height: 95px;
+  max-width: 100px;
+  min-width: 95px;
 `;

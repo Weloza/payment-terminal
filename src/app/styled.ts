@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const MainHeader = styled.h1`
+export const MainTitle = styled.h1`
   text-align: center;
   font-size: 4em;
   color: white;
   font-weight: bold;
 `;
 
-export const SecondaryHeader = styled.h2`
+export const SecondaryTitle = styled.h2`
   text-align: center;
   font-size: 1.5em;
   color: white;
@@ -30,4 +30,9 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+`;
+
+export const StyledFooter = styled.footer`
+  display: flex;
+  max-width: 100%;
 `;

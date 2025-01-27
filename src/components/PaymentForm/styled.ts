@@ -71,6 +71,7 @@ export const FormCustom = styled(Form)`
   align-items: center;
   margin-top: 5px;
   max-width: 95%;
+  min-width: 80%;
 `;
 
 export const MainHeader = styled.h2`
@@ -82,9 +83,12 @@ export const MainHeader = styled.h2`
 
 export const Article = styled.article`
   margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-export const StyledMessage = styled.p<{ result: string }>`
-  color: ${(props) => (props.result === 'true') ? "green" : "red"};
+export const StyledMessage = styled.p<{ color: string }>`
+  color: ${(props) => props.color};
   text-align: center;
 `;
